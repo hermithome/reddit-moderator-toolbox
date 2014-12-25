@@ -57,7 +57,17 @@ modbar.init = function modbarInit() {
 
     $body.addClass('mod-toolbox');
 
-    //
+	// Happy holidays! 
+	
+	$('#header').snowfall({minSize: 2, maxSize: 4, maxSpeed: 2});
+    $('#header-bottom-left').append('<div id="happyHolidays">The Toolbox team wishes you happy holidays!</div>'); 
+	var happyHolidaysTop = $('#sr-header-area').outerHeight() + 5;
+	$('#header-bottom-left').find('#happyHolidays').css({'top': happyHolidaysTop + 'px',
+														left: '200px',
+														color: '#5F99CF',
+														position: 'absolute'
+														});
+	//
     // preload some generic variables
     //
     var shortcuts = modbar.setting('shortcuts'),//TB.storage.getSetting('Modbar','shortcuts', {}),// there is no JSON setting type.
