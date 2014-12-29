@@ -33,6 +33,7 @@
 		"libs/jquery-2.1.1.js",
 		"libs/tbplugins.js",
 		"libs/snuownd.js",
+		"libs/pako.min.js",
 		"libs/ace.js",
 		"libs/worker-css.js",
 		"libs/mode-css.js",

@@ -292,7 +292,7 @@ usernotes.init = function () {
 
     function postToWiki(sub, json, reason) {
         TBUtils.noteCache[sub] = json;
-        json = deflateNotes(json);
+        json = deconvertNotes(json);
 
         usernotes.log("Saving usernotes to wiki...");
         TBUtils.postToWiki('usernotes', sub, json, reason, true, false, function postToWiki(succ, err) {
@@ -418,15 +418,58 @@ usernotes.init = function () {
             notes.ver = TBUtils.notesSchema;
             notes.corrupted = corruptedNotes;
             return keyOnUsername(decodeNoteText(notes));
-        } else if (notes.ver == 3) {
+        }
+        else if (notes.ver == 3) {
             notes = keyOnUsername(decodeNoteText(inflateNotesV3(notes)));
             notes.ver = TBUtils.notesSchema;
             return notes;
-        } else if (notes.ver == 4 || notes.ver == 5) {
+        }
+        else if (notes.ver == 4 || notes.ver == 5) {
             return inflateNotes(notes);
         }
+        else if (notes.ver == 6) {
+            usernotes.log("Blob64: "+notes.blob);
+            usernotes.log("Expanding base64...");
+            notes.blob = atob(notes.blob);
+            usernotes.log("Blob: "+notes.blob);
+            usernotes.log("zlib decompressing...");
+            var inflate = new pako.Inflate({to:'string'});
+            inflate.push(notes.blob);
+            var decompressed = inflate.result;
+            usernotes.log("Decompressed: "+decompressed);
+            
+            delete notes.blob;
+            notes.users = JSON.parse(decompressed);
+            
+            return inflateNotes(notes);
+        }
+        
 
         //TODO: throw an error if unrecognized version?
+    }
+    
+    function deconvertNotes(notes) {
+        usernotes.log("Deconverting notes...");
+        notes = deflateNotes(notes);
+        
+        if (notes.ver == 6) {
+            usernotes.log("Version is 6");
+            usernotes.log("Stringifying users...");
+            var users = JSON.stringify(notes.users);
+            delete notes.users;
+
+            usernotes.log("zlib compressing...");
+            var deflate = new pako.Deflate({to:'string'});
+            deflate.push(users, true);
+            notes.blob = deflate.result;
+            usernotes.log("Blob: "+notes.blob);
+            usernotes.log("Collapsing base64...");
+            notes.blob = btoa(notes.blob);
+            usernotes.log("Blob64: "+notes.blob);
+            usernotes.log("Done!");
+        }
+        
+        return notes;
     }
 
     // Compress notes so they'll store well in the database.
@@ -532,7 +575,7 @@ usernotes.init = function () {
     }
 
     function setNotes(notes, subreddit) {
-        //$.log("notes = " + notes);
+        //$.("notes = " + notes);
         //$.log("notes.ver = " + notes.ver);
 
         // schema check.
