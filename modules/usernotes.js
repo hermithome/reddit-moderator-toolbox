@@ -428,20 +428,31 @@ usernotes.init = function () {
             return inflateNotes(notes);
         }
         else if (notes.ver == 6) {
-            usernotes.log("Blob64: "+notes.blob);
-            usernotes.log("Expanding base64...");
+            usernotes.log("Converting notes...");
+            var startTime = performance.now();
+            
+            //usernotes.log("Blob64: "+notes.blob);
+            //usernotes.log("Expanding base64...");
             notes.blob = atob(notes.blob);
-            usernotes.log("Blob: "+notes.blob);
+            //usernotes.log("Blob: "+notes.blob);
             usernotes.log("zlib decompressing...");
+            var startzlib = performance.now();
             var inflate = new pako.Inflate({to:'string'});
             inflate.push(notes.blob);
             var decompressed = inflate.result;
-            usernotes.log("Decompressed: "+decompressed);
-            
+            var endzlib = performance.now();
+            usernotes.log("Took "+(endzlib-startzlib)+" ms to decompress");
+            //usernotes.log("Decompressed: "+decompressed);
             delete notes.blob;
             notes.users = JSON.parse(decompressed);
+            usernotes.log("Done!");
             
-            return inflateNotes(notes);
+            notes = inflateNotes(notes);
+            
+            var endTime = performance.now();
+            usernotes.log("Took "+(endTime-startTime)+" ms to convert");
+            
+            return notes;
         }
         
 
@@ -450,24 +461,30 @@ usernotes.init = function () {
     
     function deconvertNotes(notes) {
         usernotes.log("Deconverting notes...");
+        var startTime = performance.now();
         notes = deflateNotes(notes);
         
         if (notes.ver == 6) {
             usernotes.log("Version is 6");
-            usernotes.log("Stringifying users...");
+            //usernotes.log("Stringifying users...");
             var users = JSON.stringify(notes.users);
             delete notes.users;
 
             usernotes.log("zlib compressing...");
-            var deflate = new pako.Deflate({to:'string'});
+            var startzlib = performance.now();
+            var deflate = new pako.Deflate({to: 'string', gzip: true});
             deflate.push(users, true);
             notes.blob = deflate.result;
-            usernotes.log("Blob: "+notes.blob);
-            usernotes.log("Collapsing base64...");
+            var endzlib = performance.now();
+            usernotes.log("Took "+(endzlib-startzlib)+" ms to compress");
+            //usernotes.log("Blob: "+notes.blob);
+            //usernotes.log("Collapsing base64...");
             notes.blob = btoa(notes.blob);
-            usernotes.log("Blob64: "+notes.blob);
+            //usernotes.log("Blob64: "+notes.blob);
             usernotes.log("Done!");
         }
+        var endTime = performance.now();
+        usernotes.log("Took "+(endTime-startTime)+" ms to deconvert");
         
         return notes;
     }
