@@ -5,10 +5,15 @@ self.shortname = 'Notifier';
 self.settings['enabled']['default'] = true;
 
 // First show the options for filtering of subreddits.
+
+In the toolbox toolbar are counters for your inbox, modmail, modqueue and unmoderated queue. By default, all of the mod counters include all of the subreddits you moderate, but you can change this by making a multireddit url of the subs you want to be included. You can do this by manually adding each sub: "sub1+sub2+sub3", or by excludeing subs from "mod", a multireddit of every sub you moderate: "mod-sub4-sub5-sub6." 
+
+Note: Excluding a subreddit from one of the mod counters will also exclude it from notifications. 
+
 self.register_setting('modSubreddits', {
     'type': 'text',
     'default': 'mod',
-    'title': 'Multireddit of subs you want displayed in the modqueue counter'
+    'title': 'Multireddit of subs you want displayed in the modqueue counter.'
 });
 
 self.register_setting('unmoderatedSubreddits', {
@@ -45,7 +50,7 @@ self.register_setting('messageUnreadLink', {
 self.register_setting('modmailNotifications', {
     'type': 'boolean',
     'default': true,
-    'title': 'Get modmail notifications'
+    'title': 'Get modmail notifications (from subs in the modmail counter)'
 });
 self.register_setting('modmailUnreadLink', {
     'type': 'boolean',
@@ -70,13 +75,13 @@ self.register_setting('consolidatedMessages', {
 self.register_setting('modNotifications', {
     'type': 'boolean',
     'default': true,
-    'title': 'Get modqueue notifications'
+    'title': 'Get modqueue notifications (from subs in the modqueue counter)'
 });
 
 self.register_setting('unmoderatedNotifications', {
     'type': 'boolean',
     'default': false,
-    'title': 'Get unmoderated queue notifications'
+    'title': 'Get unmoderated queue notifications (from subs in the unmoderated counter)'
 });
 
 self.register_setting('checkInterval', {
