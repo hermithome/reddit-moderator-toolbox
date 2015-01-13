@@ -6,7 +6,10 @@ self.settings['enabled']['default'] = true;
 
 // First show the options for filtering of subreddits.
 
-In the toolbox toolbar are counters for your inbox, modmail, modqueue and unmoderated queue. By default, all of the mod counters include all of the subreddits you moderate, but you can change this by making a multireddit url of the subs you want to be included. You can do this by manually adding each sub: "sub1+sub2+sub3", or by excludeing subs from "mod", a multireddit of every sub you moderate: "mod-sub4-sub5-sub6." 
+In the toolbox toolbar are counters for your inbox, modmail, modqueue and unmoderated queue. By default, 
+all of the mod counters include all of the subreddits you moderate, but you can change this by making a 
+multireddit url of the subs you want to be included. You can do this by manually adding each sub: "sub1+sub2+sub3", 
+or by excludeing subs from "mod", a multireddit of every sub you moderate: "mod-sub4-sub5-sub6." 
 
 Note: Excluding a subreddit from one of the mod counters will also exclude it from notifications. 
 
