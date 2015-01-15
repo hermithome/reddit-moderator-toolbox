@@ -10,7 +10,7 @@ The toolbar has counters for your [inbox](http://www.reddit.com/message/inbox/),
 
 **Important:** Excluding a subreddit from one of the counters will also exclude it from notifications. 
 
-Counter settings:
+Toolbar counter settings:
 
 self.register_setting('modSubreddits', {
     'type': 'text',
@@ -34,7 +34,7 @@ self.register_setting('modmailSubreddits', {
 self.register_setting('modmailSubredditsFromPro', {
     'type': 'boolean',
     'default': false,
-    'title': 'Use priority subreddits from ModMail Pro for the subs you want displayed in the modmail counter'
+    'title': 'Use your priority subreddits from ModMail Pro for modmail counter'
 });
 
 self.register_setting('checkInterval', {
@@ -45,55 +45,60 @@ self.register_setting('checkInterval', {
 
 Notification settings:
 
+Personal Inbox:
+
 self.register_setting('messageNotifications', {
     'type': 'boolean',
     'default': true,
-    'title': 'Get notifications for new messages (replies and PMs). Clicking on a comment notification brings you to the comment (with context) and marks it as read.'
+    'title': 'Get personal inbox notifications (replies and PMs). Clicking on a comment notification brings you to the comment (with context) and marks it as read.'
 });
-
-self.register_setting('modmailNotifications', {
-    'type': 'boolean',
-    'default': true,
-    'title': 'Get modmail notifications (only subs in the modmail counter)'
-});
-
-self.register_setting('modNotifications', {
-    'type': 'boolean',
-    'default': true,
-    'title': 'Get modqueue notifications (only subs in the modqueue counter)'
-});
-
-self.register_setting('unmoderatedNotifications', {
-    'type': 'boolean',
-    'default': false,
-    'title': 'Get unmoderated queue notifications (only subs in the unmoderated counter)'
-});
-
-self.register_setting('consolidatedMessages', {
-    'type': 'boolean',
-    'default': true,
-    'title': 'Consolidate notifications (x new messages) instead of individual notifications'
-});
-
-Where links direct:
 
 self.register_setting('straightToInbox', {
     'type': 'boolean',
     'default': false,
-    'title': 'When clicking a comment notification go to the inbox (default setting goes to thread link with context=3)'
+    'title': 'When clicking a comment notification go to your inbox instead. Comment will still be marked as read.'
 });
 
 self.register_setting('messageUnreadLink', {
     'type': 'boolean',
     'default': false,
-    'title': 'Link to /message/unread/ (instead of /message/inbox) if unread messages are present'
+    'title': 'Link to /message/unread/ (instead of /message/inbox) if unread messages are present. Affects both counter and notifications.'
+});
+
+Modmail:
+
+self.register_setting('modmailNotifications', {
+    'type': 'boolean',
+    'default': true,
+    'title': 'Get modmail notifications. Clicking on a modmail notification brings you to /message/moderator.'
 });
 
 self.register_setting('modmailUnreadLink', {
     'type': 'boolean',
     'default': false,
-    'title': 'Link to /message/moderator/unread/ if unread modmail is present'
+    'title': 'Link to /message/moderator/unread/ if unread modmail is present. Affects both counter and notifications.'
 });
+
+Queues:
+
+self.register_setting('modNotifications', {
+    'type': 'boolean',
+    'default': true,
+    'title': 'Get modqueue (reports) notifications. Clicking on a modqueue notification brings you to .'
+});
+
+self.register_setting('unmoderatedNotifications', {
+    'type': 'boolean',
+    'default': false,
+    'title': 'Get unmoderated queue notifications. Clicking on an unmoderated queue notification brings you to .'
+});
+
+self.register_setting('consolidatedMessages', {
+    'type': 'boolean',
+    'default': true,
+    'title': 'Consolidate notifications (x new messages) instead of individual notifications. Clicking on a consolidated notification brings you to '
+});
+
 
 /// Private storage settings.
 self.register_setting('unreadMessageCount', {
