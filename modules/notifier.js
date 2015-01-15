@@ -52,13 +52,13 @@ Personal Messages:
 self.register_setting('messageNotifications', {
     'type': 'boolean',
     'default': true,
-    'title': 'Get personal message notifications (comments and PMs). Clicking on a message notification opens a new tab to the permalink for the comment/PM (including context if applicable) and marks it as read.'
+    'title': 'Get personal message notifications (comments and PMs). Clicking a message notification opens a new tab to the permalink for the comment/PM (including context if available) and marks it as read.'
 });
 
 self.register_setting('straightToInbox', {
     'type': 'boolean',
     'default': false,
-    'title': 'Clicking a personal inbox notification opens a new tab to your inbox instead of to the comment/PM permalink. When clicking the notification, toolbox does not mark the message as read, but depending on your reddit preferences, going to your inbox may mark your messages as read anyway.'
+    'title': 'Clicking a personal message notification opens a new tab to your inbox instead of to the comment/PM permalink. When clicking the notification, toolbox does not mark the message as read, but depending on your reddit preferences, going to your inbox may mark your messages as read anyway.'
 });
 
 self.register_setting('messageUnreadLink', {
@@ -72,7 +72,7 @@ Modmail:
 self.register_setting('modmailNotifications', {
     'type': 'boolean',
     'default': true,
-    'title': 'Get modmail notifications. Clicking on a modmail notification opens a new tab to /message/moderator.'
+    'title': 'Get modmail notifications. Clicking a modmail notification opens a new tab to /message/moderator.'
 });
 
 self.register_setting('modmailUnreadLink', {
@@ -86,19 +86,19 @@ Queues:
 self.register_setting('modNotifications', {
     'type': 'boolean',
     'default': true,
-    'title': 'Get modqueue notifications. Clicking on a modqueue notification opens a new tab to /r/mod/about/modqueue.'
+    'title': 'Get modqueue notifications. Clicking a modqueue notification opens a new tab to /r/mod/about/modqueue.'
 });
 
 self.register_setting('unmoderatedNotifications', {
     'type': 'boolean',
     'default': false,
-    'title': 'Get unmoderated queue notifications. Clicking on an unmoderated queue notification opens a new tab to /r/mod/about/ummoderated.'
+    'title': 'Get unmoderated queue notifications. Clicking an unmoderated queue notification opens a new tab to /r/mod/about/ummoderated.'
 });
 
 self.register_setting('consolidatedMessages', {
     'type': 'boolean',
     'default': true,
-    'title': 'Consolidate notifications by type (ex: 5 new modquue items in /r/subreddit ) instead of receiving individual notifications for each item. Clicking a consolidated message notification opens a new tab to /inbox (or /unread, depending on your preferences), and does not mark your messages as read. Clicking a consolidated moderator notification functions in the same way as clicking an individual moderator notification.
+    'title': 'Consolidate notifications by type (ex: 5 new modquue items) instead of receiving individual notifications for each item. Clicking a consolidated message notification opens a new tab to /inbox (or /unread, depending on your preferences), and does not mark your messages as read. Clicking a consolidated moderator notification functions in the same way as clicking an individual moderator notification.
 });
 
 
