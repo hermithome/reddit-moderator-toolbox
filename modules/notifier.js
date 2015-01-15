@@ -45,6 +45,8 @@ self.register_setting('checkInterval', {
 
 Notification settings:
 
+Notifications let you know what's new in your counter. They include the username and the subreddit of the new item. Depending on your browser and preferences, you may need to allow notifications for reddit. Clicking on a notification opens a new tab??/window?? and takes you to the relevant page.  
+
 Personal Inbox:
 
 self.register_setting('messageNotifications', {
@@ -84,19 +86,19 @@ Queues:
 self.register_setting('modNotifications', {
     'type': 'boolean',
     'default': true,
-    'title': 'Get modqueue (reports) notifications. Clicking on a modqueue notification brings you to .'
+    'title': 'Get modqueue (reports) notifications. Clicking on a modqueue notification takes you to /r/mod/about/modqueue.'
 });
 
 self.register_setting('unmoderatedNotifications', {
     'type': 'boolean',
     'default': false,
-    'title': 'Get unmoderated queue notifications. Clicking on an unmoderated queue notification brings you to .'
+    'title': 'Get unmoderated queue notifications. Clicking on an unmoderated queue notification brings you to /r/mod/about/ummoderated.'
 });
 
 self.register_setting('consolidatedMessages', {
     'type': 'boolean',
     'default': true,
-    'title': 'Consolidate notifications (x new messages) instead of individual notifications. Clicking on a consolidated notification brings you to '
+    'title': 'Consolidate notifications (x new messages) instead of individual notifications. Clicking on a consolidated notification brings you to ?????'
 });
 
 
