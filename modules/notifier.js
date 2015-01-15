@@ -6,12 +6,11 @@ self.settings['enabled']['default'] = true;
 
 // First show the options for filtering of subreddits.
 
-In the toolbox toolbar are counters for your inbox, modmail, modqueue and unmoderated queue. By default, 
-all of the mod counters include all of the subreddits you moderate, but you can change this by making a 
-multireddit url of the subs you want to be included. You can do this by manually adding each sub: "sub1+sub2+sub3", 
-or by excludeing subs from "mod", a multireddit of every sub you moderate: "mod-sub4-sub5-sub6." 
+The toolbar has counters for your [inbox](http://www.reddit.com/message/inbox/), [modmail](http://www.reddit.com/message/moderator/), [modqueue](http://www.reddit.com/r/mod/about/modqueue) and [unmoderated queue](http://www.reddit.com/r/mod/about/unmoderated). By default, the counters include a multireddit of the subreddits you moderate, but you can change this by manually including each subreddit:`sub1+sub2+sub3`, or by excluding subreddits: `mod-sub1-sub2-sub3`.
 
-Note: Excluding a subreddit from one of the mod counters will also exclude it from notifications. 
+**Important:** Excluding a subreddit from one of the counters will also exclude it from notifications. 
+
+Counter settings:
 
 self.register_setting('modSubreddits', {
     'type': 'text',
@@ -35,36 +34,39 @@ self.register_setting('modmailSubreddits', {
 self.register_setting('modmailSubredditsFromPro', {
     'type': 'boolean',
     'default': false,
-    'title': 'Use filtered subreddits from ModMail Pro'
+    'title': 'Use priority subreddits from ModMail Pro for the subs you want displayed in the modmail counter'
 });
+
+self.register_setting('checkInterval', {
+    'type': 'number',
+    'default': 1, // 60 secs.
+    'title': 'Interval to check for new items (time in minutes).'
+});
+
+Notification settings:
 
 self.register_setting('messageNotifications', {
     'type': 'boolean',
     'default': true,
-    'title': 'Get notifications for new messages'
-});
-
-self.register_setting('messageUnreadLink', {
-    'type': 'boolean',
-    'default': false,
-    'title': 'Link to /message/unread/ if unread messages are present'
+    'title': 'Get notifications for new messages (replies and PMs). Clicking on a comment notification brings you to the comment (with context) and marks it as read.'
 });
 
 self.register_setting('modmailNotifications', {
     'type': 'boolean',
     'default': true,
-    'title': 'Get modmail notifications (from subs in the modmail counter)'
-});
-self.register_setting('modmailUnreadLink', {
-    'type': 'boolean',
-    'default': false,
-    'title': 'Link to /message/moderator/unread/ if unread modmail is present'
+    'title': 'Get modmail notifications (only subs in the modmail counter)'
 });
 
-self.register_setting('straightToInbox', {
+self.register_setting('modNotifications', {
+    'type': 'boolean',
+    'default': true,
+    'title': 'Get modqueue notifications (only subs in the modqueue counter)'
+});
+
+self.register_setting('unmoderatedNotifications', {
     'type': 'boolean',
     'default': false,
-    'title': 'When clicking a comment notification go to the inbox'
+    'title': 'Get unmoderated queue notifications (only subs in the unmoderated counter)'
 });
 
 self.register_setting('consolidatedMessages', {
@@ -73,24 +75,24 @@ self.register_setting('consolidatedMessages', {
     'title': 'Consolidate notifications (x new messages) instead of individual notifications'
 });
 
-// Do we want queue notifications?
+Where links direct:
 
-self.register_setting('modNotifications', {
-    'type': 'boolean',
-    'default': true,
-    'title': 'Get modqueue notifications (from subs in the modqueue counter)'
-});
-
-self.register_setting('unmoderatedNotifications', {
+self.register_setting('straightToInbox', {
     'type': 'boolean',
     'default': false,
-    'title': 'Get unmoderated queue notifications (from subs in the unmoderated counter)'
+    'title': 'When clicking a comment notification go to the inbox (default setting goes to thread link with context=3)'
 });
 
-self.register_setting('checkInterval', {
-    'type': 'number',
-    'default': 1, // 60 secs.
-    'title': 'Interval to check for new items (time in minutes).'
+self.register_setting('messageUnreadLink', {
+    'type': 'boolean',
+    'default': false,
+    'title': 'Link to /message/unread/ (instead of /message/inbox) if unread messages are present'
+});
+
+self.register_setting('modmailUnreadLink', {
+    'type': 'boolean',
+    'default': false,
+    'title': 'Link to /message/moderator/unread/ if unread modmail is present'
 });
 
 /// Private storage settings.
