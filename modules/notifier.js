@@ -15,7 +15,7 @@ Toolbar counter settings:
 self.register_setting('modSubreddits', {
     'type': 'text',
     'default': 'mod',
-    'title': 'Multireddit of subs you want displayed in the modqueue counter.'
+    'title': 'Multireddit of subs you want displayed in the modqueue (reports) counter.'
 });
 
 self.register_setting('unmoderatedSubreddits', {
@@ -45,26 +45,26 @@ self.register_setting('checkInterval', {
 
 Notification settings:
 
-Notifications let you know what's new in your counter. They include the username and the subreddit of the new item. Depending on your browser and preferences, you may need to allow notifications for reddit. Clicking on a notification opens a new tab??/window?? and takes you to the relevant page.  
+Notifications let you know what's new in your counter. They include the username and the subreddit of the new item. Depending on your browser and preferences, you may need to allow notifications for reddit. Clicking on a notification opens a new tab(or window, depending on your browser preferences)??? and takes you to the relevant page.  
 
 Personal Inbox:
 
 self.register_setting('messageNotifications', {
     'type': 'boolean',
     'default': true,
-    'title': 'Get personal inbox notifications (replies and PMs). Clicking on a comment notification brings you to the comment (with context) and marks it as read.'
+    'title': 'Get personal inbox notifications (replies and PMs). Clicking on a comment notification opens the comment permalink (with context) and marks it as read. Clicking on a PM notification opens your inbox, and marks the PM as read.?'
 });
 
 self.register_setting('straightToInbox', {
     'type': 'boolean',
     'default': false,
-    'title': 'When clicking a comment notification go to your inbox instead. Comment will still be marked as read.'
+    'title': 'When clicking a comment notification go to your inbox instead of to the comment permalink. Comment will still be marked as read.?'
 });
 
 self.register_setting('messageUnreadLink', {
     'type': 'boolean',
     'default': false,
-    'title': 'Link to /message/unread/ (instead of /message/inbox) if unread messages are present. Affects both counter and notifications.'
+    'title': 'Link to /message/unread/ (instead of /message/inbox) if unread messages are present. Affects both the counter and notifications.'
 });
 
 Modmail:
@@ -72,7 +72,7 @@ Modmail:
 self.register_setting('modmailNotifications', {
     'type': 'boolean',
     'default': true,
-    'title': 'Get modmail notifications. Clicking on a modmail notification brings you to /message/moderator.'
+    'title': 'Get modmail notifications. Clicking on a modmail notification opens a new tab to /message/moderator and marks the modmail as read?.'
 });
 
 self.register_setting('modmailUnreadLink', {
@@ -86,13 +86,13 @@ Queues:
 self.register_setting('modNotifications', {
     'type': 'boolean',
     'default': true,
-    'title': 'Get modqueue (reports) notifications. Clicking on a modqueue notification takes you to /r/mod/about/modqueue.'
+    'title': 'Get modqueue notifications. Clicking on a modqueue notification opens a new tab to /r/mod/about/modqueue.'
 });
 
 self.register_setting('unmoderatedNotifications', {
     'type': 'boolean',
     'default': false,
-    'title': 'Get unmoderated queue notifications. Clicking on an unmoderated queue notification brings you to /r/mod/about/ummoderated.'
+    'title': 'Get unmoderated queue notifications. Clicking on an unmoderated queue notification opens a new tab to /r/mod/about/ummoderated.'
 });
 
 self.register_setting('consolidatedMessages', {
