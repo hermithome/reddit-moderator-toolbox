@@ -51,10 +51,10 @@ Notification settings:
 Notifications let you know what's new in your counter. Clicking on a notification 
 opens a new tab (or window, depending on your browser preferences) and takes you to the relevant page.  
 
-//Additional info that should be placed elsewhere:
-//* They include the username and the subreddit of the new item. 
-//* Depending on your browser and preferences, you may need to allow notifications for reddit.
-//* You may need to allow pop-ups in order for clicking notifications to work.
+// Additional info that should be placed elsewhere:
+//  They include the username and the subreddit of the new item. 
+//  Depending on your browser and preferences, you may need to allow notifications for reddit.
+//  You may need to allow pop-ups in order for clicking notifications to work.
 
 Personal Messages:
 
