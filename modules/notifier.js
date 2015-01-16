@@ -6,7 +6,10 @@ self.settings['enabled']['default'] = true;
 
 // First show the options for filtering of subreddits.
 
-The toolbar has counters for your [inbox](http://www.reddit.com/message/inbox/), [modmail](http://www.reddit.com/message/moderator/), [modqueue](http://www.reddit.com/r/mod/about/modqueue) and [unmoderated queue](http://www.reddit.com/r/mod/about/unmoderated). By default, the counters include a multireddit of the subreddits you moderate, but you can change this by manually including each subreddit:`sub1+sub2+sub3`, or by excluding subreddits: `mod-sub1-sub2-sub3`.
+The toolbar has counters for your [inbox](/message/inbox/), [modmail](/message/moderator/), [modqueue](/r/mod/about/modqueue)
+and [unmoderated queue](/r/mod/about/unmoderated). By default, the counters include a multireddit of the subreddits you 
+moderate, but you can change this by manually including each subreddit:`sub1+sub2+sub3`, or by excluding subreddits:
+`mod-sub1-sub2-sub3`.
 
 **Important:** Excluding a subreddit from one of the counters will also exclude it from notifications. 
 
@@ -45,26 +48,31 @@ self.register_setting('checkInterval', {
 
 Notification settings:
 
-Notifications let you know what's new in your counter. They include the username and the subreddit of the new item. Depending on your browser and preferences, you may need to allow notifications for reddit. Clicking on a notification opens a new tab(or window, depending on your browser preferences) and takes you to the relevant page.  
+Notifications let you know what's new in your counter. They include the username and the subreddit of the new item. 
+Depending on your browser and preferences, you may need to allow notifications for reddit. Clicking on a notification 
+opens a new tab(or window, depending on your browser preferences) and takes you to the relevant page.  
 
 Personal Messages:
 
 self.register_setting('messageNotifications', {
     'type': 'boolean',
     'default': true,
-    'title': 'Get message notifications (comments and PMs). Clicking a message notification opens a new tab to the permalink for the comment/PM (including context if available) and marks it as read.'
+    'title': 'Get message notifications (comments and PMs). Clicking a message notification opens a new tab to the 
+    permalink for the comment/PM (including context if available) and marks it as read.'
 });
 
 self.register_setting('straightToInbox', {
     'type': 'boolean',
     'default': false,
-    'title': 'Message notifications link to your inbox instead of to the comment/PM permalink. When clicking the notification, toolbox does not mark the message as read, but depending on your reddit preferences, going to your inbox may mark your messages as read anyway.'
+    'title': 'Message notifications link to your inbox instead of to the comment/PM permalink. Toolbox does not mark the 
+    message as read, but depending on your reddit preferences, going to your inbox may mark your messages as read anyway.'
 });
 
 self.register_setting('messageUnreadLink', {
     'type': 'boolean',
     'default': false,
-    'title': 'Link to /message/unread/ (instead of /message/inbox) if unread messages are present. Affects both the counter and notification pop-ups.'
+    'title': 'Link to /message/unread/ (instead of /message/inbox) if unread messages are present. Affects both 
+    the counter and notification pop-ups.'
 });
 
 Modmail:
@@ -78,7 +86,8 @@ self.register_setting('modmailNotifications', {
 self.register_setting('modmailUnreadLink', {
     'type': 'boolean',
     'default': false,
-    'title': 'Link to /message/moderator/unread/ if unread modmail is present. Affects both the counter and notification pop-ups.'
+    'title': 'Link to /message/moderator/unread/ if unread modmail is present. Affects both the counter 
+    and notification pop-ups.'
 });
 
 Queues:
@@ -92,13 +101,17 @@ self.register_setting('modNotifications', {
 self.register_setting('unmoderatedNotifications', {
     'type': 'boolean',
     'default': false,
-    'title': 'Get unmoderated queue notifications. Clicking an unmoderated queue notification opens a new tab to /r/mod/about/ummoderated.'
+    'title': 'Get unmoderated queue notifications. Clicking an unmoderated queue notification opens a new tab 
+    to /r/mod/about/ummoderated.'
 });
 
 self.register_setting('consolidatedMessages', {
     'type': 'boolean',
     'default': true,
-    'title': 'Consolidate notifications by type (ex: 5 new modquue items) instead of receiving individual notifications for each item. Clicking a consolidated message notification opens a new tab to /inbox (or /unread, depending on your preferences), and does not mark your messages as read. Consolidated moderator notifications function just as individual moderator notifications.
+    'title': 'Consolidate notifications by type (ex: 5 new modquue items) instead of receiving individual notifications
+    for each item. Clicking a consolidated message notification opens a new tab to /inbox (or /unread, depending on your
+    preferences), and does not mark your messages as read. Consolidated moderator notifications function just as
+    individual moderator notifications.
 });
 
 
